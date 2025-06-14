@@ -4,7 +4,6 @@
 */
 
 import { Card, CardContent } from "@/components/ui/card";
-import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 
@@ -32,7 +31,8 @@ export default function ProjectOverview() {
               <p>Monitors and blocks sensitive file transfers such as SSNs or banking data.</p>
               <p className="bg-red-100 text-red-900 p-2 rounded-md">Sample Log:</p>
               <pre className="bg-gray-800 text-green-400 p-3 rounded-lg overflow-x-auto">
-2025-06-01 14:34:02 | ALERT | File Transfer Detected: Employee_SSNs.docx | User: intern-usr01 | Action: Blocked</pre>
+{`2025-06-01 14:34:02 | ALERT | File Transfer Detected: Employee_SSNs.docx | User: intern-usr01 | Action: Blocked`}
+</pre>
             </CardContent>
           </Card>
         </TabsContent>
@@ -45,7 +45,8 @@ export default function ProjectOverview() {
               <p>Shows role escalation and misconfigured access.</p>
               <p className="bg-blue-100 text-blue-900 p-2 rounded-md">Sample Log:</p>
               <pre className="bg-gray-800 text-yellow-300 p-3 rounded-lg overflow-x-auto">
-2025-06-01 15:12:48 | POLICY BREACH | User: intern-usr01 | Escalated Access to Resource: Admin_DB | Result: Unauthorized Access</pre>
+{`2025-06-01 15:12:48 | POLICY BREACH | User: intern-usr01 | Escalated Access to Resource: Admin_DB | Result: Unauthorized Access`}
+</pre>
             </CardContent>
           </Card>
         </TabsContent>
@@ -58,7 +59,8 @@ export default function ProjectOverview() {
               <p>Detects route hijacks and anomalous BGP behavior.</p>
               <p className="bg-green-100 text-green-900 p-2 rounded-md">Sample Alert:</p>
               <pre className="bg-gray-800 text-pink-400 p-3 rounded-lg overflow-x-auto">
-2025-06-01 16:27:13 | ALERT | Possible BGP Hijack Detected | Prefix: 192.0.2.0/24 | AS Path: AS64501 > AS12345 (Unexpected)</pre>
+{`2025-06-01 16:27:13 | ALERT | Possible BGP Hijack Detected | Prefix: 192.0.2.0/24 | AS Path: AS64501 > AS12345 (Unexpected)`}
+</pre>
             </CardContent>
           </Card>
         </TabsContent>
