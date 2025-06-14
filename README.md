@@ -1,84 +1,106 @@
-/*
-  GitHub Repository: DLP-BGP-IAM-Threat-Project
-  Description: Portfolio project demonstrating detection and prevention of insider threats through Data Loss Prevention (DLP), Identity and Access Management (IAM), and Border Gateway Protocol (BGP) anomaly detection.
-*/
+# DLP-BGP-IAM Threat Simulation Project
 
-import { Card, CardContent } from "@/components/ui/card";
-import { Button } from "@/components/ui/button";
-import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
+This project simulates insider threat scenarios by integrating:
 
-export default function ProjectOverview() {
-  return (
-    <div className="p-6 space-y-6">
-      <h1 className="text-4xl font-extrabold text-purple-600">🔐 Insider Threat Simulation Project</h1>
-      <p className="text-lg text-gray-700">
-        Detect and mitigate internal threats by combining <span className="text-red-500 font-semibold">Data Loss Prevention</span>,
-        <span className="text-blue-500 font-semibold"> IAM policies</span>, and <span className="text-green-600 font-semibold">BGP anomaly detection</span>.
-      </p>
+* **Data Loss Prevention (DLP)** using Wazuh
+* **Identity and Access Management (IAM)** using Keycloak
+* **BGP Hijack Detection** using BGPalerter
 
-      <Tabs defaultValue="dlp">
-        <TabsList className="bg-gray-100 dark:bg-gray-800 border p-1 rounded-xl">
-          <TabsTrigger value="dlp" className="text-red-500">DLP</TabsTrigger>
-          <TabsTrigger value="iam" className="text-blue-500">IAM</TabsTrigger>
-          <TabsTrigger value="bgp" className="text-green-600">BGP</TabsTrigger>
-        </TabsList>
+---
 
-        <TabsContent value="dlp">
-          <Card>
-            <CardContent className="space-y-2 p-4">
-              <h2 className="text-xl font-bold text-red-500">📁 DLP Module</h2>
-              <p>Tool: <strong>Wazuh</strong></p>
-              <p>Monitors and blocks sensitive file transfers such as SSNs or banking data.</p>
-              <p className="bg-red-100 text-red-900 p-2 rounded-md">Sample Log:</p>
-              <pre className="bg-gray-800 text-green-400 p-3 rounded-lg overflow-x-auto">
-{`2025-06-01 14:34:02 | ALERT | File Transfer Detected: Employee_SSNs.docx | User: intern-usr01 | Action: Blocked`}
-</pre>
-            </CardContent>
-          </Card>
-        </TabsContent>
+## 🚀 Project Summary
 
-        <TabsContent value="iam">
-          <Card>
-            <CardContent className="space-y-2 p-4">
-              <h2 className="text-xl font-bold text-blue-500">🔐 IAM Simulation</h2>
-              <p>Tool: <strong>Keycloak</strong></p>
-              <p>Shows role escalation and misconfigured access.</p>
-              <p className="bg-blue-100 text-blue-900 p-2 rounded-md">Sample Log:</p>
-              <pre className="bg-gray-800 text-yellow-300 p-3 rounded-lg overflow-x-auto">
-{`2025-06-01 15:12:48 | POLICY BREACH | User: intern-usr01 | Escalated Access to Resource: Admin_DB | Result: Unauthorized Access`}
-</pre>
-            </CardContent>
-          </Card>
-        </TabsContent>
+Simulates real-world attacks where:
 
-        <TabsContent value="bgp">
-          <Card>
-            <CardContent className="space-y-2 p-4">
-              <h2 className="text-xl font-bold text-green-600">🌐 BGP Monitoring</h2>
-              <p>Tool: <strong>BGPalerter</strong></p>
-              <p>Detects route hijacks and anomalous BGP behavior.</p>
-              <p className="bg-green-100 text-green-900 p-2 rounded-md">Sample Alert:</p>
-              <pre className="bg-gray-800 text-pink-400 p-3 rounded-lg overflow-x-auto">
-{`2025-06-01 16:27:13 | ALERT | Possible BGP Hijack Detected | Prefix: 192.0.2.0/24 | AS Path: AS64501 > AS12345 (Unexpected)`}
-</pre>
-            </CardContent>
-          </Card>
-        </TabsContent>
-      </Tabs>
+* A user attempts to exfiltrate sensitive data (DLP event)
+* A misconfigured IAM policy allows elevated access
+* Anomalous BGP route detected representing a network-level threat
 
-      <div className="bg-yellow-50 p-4 border-l-4 border-yellow-400 text-yellow-800 mt-6">
-        <p className="font-medium">📝 Project Summary:</p>
-        <p>
-          This lab simulates insider threats where an intern tries to exfiltrate sensitive files,
-          IAM role misuse grants unauthorized access, and BGP hijacks are detected to protect outbound data routes.
-        </p>
-      </div>
+Each scenario is documented with logs, screenshots, and tool configurations to demonstrate analyst workflow.
 
-      <div className="mt-6">
-        <Button className="bg-gradient-to-r from-red-500 via-purple-500 to-blue-500 text-white font-bold py-2 px-4 rounded-full">
-          View Full Logs and Reports
-        </Button>
-      </div>
-    </div>
-  );
-}
+---
+
+## 🔧 Tools Used
+
+| Tool       | Purpose                             | Link                                                                         |
+| ---------- | ----------------------------------- | ---------------------------------------------------------------------------- |
+| Wazuh      | Host-based alerting & DLP detection | [https://wazuh.com/](https://wazuh.com/)                                     |
+| Keycloak   | IAM role & policy testing           | [https://www.keycloak.org/](https://www.keycloak.org/)                       |
+| BGPalerter | BGP hijack monitoring               | [https://github.com/nttgin/BGPalerter](https://github.com/nttgin/BGPalerter) |
+
+---
+
+## 📁 Project Structure
+
+```
+/DLP-BGP-IAM-Threat-Project
+│
+├── /DLP
+│   ├── wazuh-dlp-rule.conf
+│   └── sample-dlp-alert.log
+│
+├── /IAM
+│   ├── keycloak-policy.json
+│   └── privilege-violation.log
+│
+├── /BGP
+│   ├── bgpalerter.conf.yml
+│   └── hijack-alert.log
+│
+└── /docs
+    └── project-summary.md
+```
+
+---
+
+## 📄 Sample Logs
+
+### 🔴 DLP Log
+
+```
+2025-06-01 14:34:02 | ALERT | File Transfer Detected: Employee_SSNs.docx | User: intern-usr01 | Action: Blocked
+```
+
+### 🔵 IAM Log
+
+```
+2025-06-01 15:12:48 | POLICY BREACH | User: intern-usr01 | Escalated Access to Resource: Admin_DB | Result: Unauthorized Access
+```
+
+### 🟢 BGP Log
+
+```
+2025-06-01 16:27:13 | ALERT | Possible BGP Hijack Detected | Prefix: 192.0.2.0/24 | AS Path: AS64501 > AS12345 (Unexpected)
+```
+
+---
+
+## 🛠️ How to Run
+
+1. Clone the repo to your local machine
+2. Setup VMs or containers for Wazuh, Keycloak, and BGPalerter
+3. Import config files from the respective folders
+4. Simulate threat behavior and monitor the logs
+5. Document your analysis as a report for portfolio or GitHub Pages
+
+---
+
+## 🧠 What to Highlight in Interviews
+
+* Created threat detection labs simulating insider misuse and external hijack risks
+* Demonstrated alert triage, policy misconfiguration, and detection engineering
+* Integrated logging, governance, and routing intelligence in one scenario
+
+---
+
+## 📌 Tags
+
+`#DLP` `#IAM` `#BGP` `#Cybersecurity` `#ThreatHunting` `#SOC` `#SIEM` `#InsiderThreat`
+
+---
+
+## 👨‍💻 Author
+
+Designed and simulated by a cybersecurity analyst with hands-on skills in SIEM, IAM policy testing, and open-source threat tools.
+
+> “Detect the invisible. Govern the unknown. Defend beyond the firewall.”
